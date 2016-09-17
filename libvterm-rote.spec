@@ -5,12 +5,12 @@
 
 Summary:	libvterm library
 Summary(pl.UTF-8):	Bilblioteka libvterm
-Name:		libvterm
+Name:		libvterm-rote
 Version:	0.99.7
 Release:	0.1
 License:	GPLv2+
 Group:		Libraries
-Source0:	http://download.sourceforge.net/libvterm/%{name}-%{version}.tar.gz
+Source0:	http://download.sourceforge.net/libvterm/libvterm-%{version}.tar.gz
 # Source0-md5:	ac68b77eb33086f7532ab303245efb77
 URL:		http://libvterm.sourceforge.net/
 BuildRequires:	glib2-devel
@@ -27,31 +27,31 @@ libvterm library.
 Biblioteka libvterm.
 
 %package devel
-Summary:	Header files for %{name} library
-Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki %{name}
+Summary:	Header files for libvterm library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libvterm
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Header files for %{name} library.
+Header files for libvterm library.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe biblioteki %{name}.
+Pliki nagłówkowe biblioteki libvterm.
 
 %package static
-Summary:	Static %{name} library
-Summary(pl.UTF-8):	Statyczna biblioteka %{name}
+Summary:	Static libvterm library
+Summary(pl.UTF-8):	Statyczna biblioteka libvterm
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static %{name} library.
+Static libvterm library.
 
 %description static -l pl.UTF-8
-Statyczna biblioteka %{name}.
+Statyczna biblioteka libvterm.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n libvterm
 
 %build
 %{__cc} %{rpmcflags} -D_REENTRANT -I/usr/include/ncurses -c -fPIC *.c `pkg-config --cflags glib-2.0`
@@ -73,8 +73,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG
-%attr(755,root,root) %{_libdir}/%{name}.so
-#%attr(755,root,root) %ghost %{_libdir}/%{name}.so.N
+%attr(755,root,root) %{_libdir}/libvterm.so
+#%attr(755,root,root) %ghost %{_libdir}/libvterm.so.N
 
 %files devel
 %defattr(644,root,root,755)
@@ -85,6 +85,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/%{name}.a
+%{_libdir}/libvterm.a
 %endif
 %endif
